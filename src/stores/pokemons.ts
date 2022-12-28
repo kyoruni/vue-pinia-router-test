@@ -11,7 +11,6 @@ export const usePokemonsStore = defineStore('pokemons', () => {
   const pokemons = ref(new Map<number, Pokemon>());
   // action
   function initList () {
-    console.log('initPokemons');
     pokemons.value.set(1, {
       id: 1,
       name: 'フシギダネ',

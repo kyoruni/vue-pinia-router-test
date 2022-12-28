@@ -1,8 +1,14 @@
 <script setup lang="ts">
-import { inject } from 'vue';
+import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import type { Pokemon } from '@/interfaces';
-const pokemons = inject('pokemons') as Map<number, Pokemon>;
+import { usePokemonsStore } from '@/stores/pokemons';
+
+const pokemonsStore = usePokemonsStore();
+
+const pokemons = computed((): Map<number, Pokemon> => {
+  return pokemonsStore.pokemons
+});
 </script>
 
 <template>
