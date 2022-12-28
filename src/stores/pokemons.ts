@@ -10,7 +10,7 @@ export const usePokemonsStore = defineStore('pokemons', () => {
   // store
   const pokemons = ref(new Map<number, Pokemon>());
   // getters
-  const getById = (id: number) :Pokemon => {
+  const getById = (id: number): Pokemon => {
     const pokemon = pokemons.value.get(id) as Pokemon;
     return pokemon;
   };
