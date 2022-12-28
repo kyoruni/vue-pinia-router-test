@@ -37,5 +37,9 @@ export const usePokemonsStore = defineStore('pokemons', () => {
     });
   };
 
-  return { pokemons, initList, getById };
+  function addPokemon (pokemon: Pokemon) {
+    pokemons.value.set(pokemon.id, pokemon);
+  };
+
+  return { pokemons, initList, getById, addPokemon };
 });

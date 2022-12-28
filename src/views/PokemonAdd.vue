@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { inject, reactive } from 'vue';
+import { reactive } from 'vue';
 import { RouterLink, useRouter } from 'vue-router';
 import type { Pokemon } from '@/interfaces';
+import { usePokemonsStore } from '@/stores/pokemons';
+
 const router = useRouter();
-const pokemons = inject('pokemons') as Map<number, Pokemon>;
+const pokemonsStore = usePokemonsStore();
 const pokemon: Pokemon = reactive(
   {
     id: 0,
@@ -34,9 +36,7 @@ const types = [
   'フェアリー',
 ];
 const submit = () => {
-  console.log('submit');
-  console.log(pokemon);
-  pokemons.set(pokemon.id, pokemon);
+  pokemonsStore.addPokemon(pokemon);
   router.push({ name: 'PokemonList' });
 };
 </script>
