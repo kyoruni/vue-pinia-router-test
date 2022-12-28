@@ -2,16 +2,15 @@
 import { inject, computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import type { Pokemon } from '@/interfaces';
+import { usePokemonsStore } from '@/stores/pokemons';
 interface Props {
   id: number;
 };
 const props = defineProps<Props>();
-const pokemons = inject('pokemons') as Map<number, Pokemon>;
-const pokemon = computed(
-  Pokemon => {
-    return pokemons.get(props.id) as Pokemon;
-  }
-);
+const pokemonsStore = usePokemonsStore();
+const pokemon = computed((): Pokemon => {
+  return pokemonsStore.getById(props.id);
+});
 </script>
 
 <template>

@@ -9,6 +9,11 @@ interface State {
 export const usePokemonsStore = defineStore('pokemons', () => {
   // store
   const pokemons = ref(new Map<number, Pokemon>());
+  // getters
+  const getById = (id: number) :Pokemon => {
+    const pokemon = pokemons.value.get(id) as Pokemon;
+    return pokemon;
+  };
   // action
   function initList () {
     pokemons.value.set(1, {
@@ -32,5 +37,5 @@ export const usePokemonsStore = defineStore('pokemons', () => {
     });
   };
 
-  return { pokemons, initList };
+  return { pokemons, initList, getById };
 });
